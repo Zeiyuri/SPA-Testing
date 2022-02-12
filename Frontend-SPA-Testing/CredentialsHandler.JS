@@ -7,7 +7,6 @@ const GetPassword = () => {
 }
 
 const SetUserName = (username) =>{
-    alert(username);
     localStorage.setItem("username",`${username}`)
 }
 

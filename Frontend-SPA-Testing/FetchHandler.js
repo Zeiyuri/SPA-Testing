@@ -41,11 +41,11 @@ const registerUser = async (body) => {
     {'Content-Type': 'application/json'},
     "POST",JSON.stringify(body))
 };
-const createExpense = async (username, password, body) => {
+const createExpense = async (body) => {
     return await Fetcher(`${apiHost}api/createExpense`,
     {
         'Content-Type': 'application/json',
-        Authorization:`Basic ${credentialsAsBase64(username,password)}`
+        Authorization:`Basic ${credentialsAsBase64(GetUserName(),GetPassword())}`
     },
     'POST',
     JSON.stringify(body)

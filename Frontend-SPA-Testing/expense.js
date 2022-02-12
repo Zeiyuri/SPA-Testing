@@ -92,11 +92,11 @@ export const render = (root) => {
             'amount' : expenseAmount,
             'categoryName' : expenseCategoryName
         };
-        createExpense(username, password, data)
+        createExpense(data)
             .then(response =>{
                 if(response.status === 200) 
             {
-                alert('Category Successfully Created!')
+                alert('Expense Successfully Created!')
             } 
             else
             {
