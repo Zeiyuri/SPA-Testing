@@ -1,4 +1,4 @@
-import * as ch from "./CredentialsHandler.JS";
+import {SetPassword,SetUserName,GetUserName,GetPassword,UnsetPassword,UnsetUsername} from "./CredentialsHandler.JS";
 const apiHost = "https://localhost:7218/"
 
 const credentialsAsBase64 = (username,password) => {
@@ -15,15 +15,25 @@ const Fetcher = async (url,theHeaders,method,theBody) =>{
 };
   
 const login = async (username,password) => {
-    return await Fetcher(`${apiHost}api/login`,
+    const resp = await Fetcher(`${apiHost}api/login`,
                           {Authorization: `Basic ${credentialsAsBase64(username,password)}`},
                           "POST" );
+    if(resp.status == 200){
+        SetUserName(username);
+        SetPassword(password);
+    }
+    return resp;
 };
 
 const logout = async (username,password) => {
-    return await Fetcher(`${apiHost}api/logout`,
+    const resp =  await Fetcher(`${apiHost}api/logout`,
                           {Authorization:`Basic ${credentialsAsBase64(username,password)}`},
                           "POST")
+            if(resp.status == 200){
+                UnsetUsername();
+                UnsetPassword();
+            }
+            return resp;
             };
 
 const registerUser = async (body) => {

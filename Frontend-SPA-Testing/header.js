@@ -1,6 +1,6 @@
 import { changePage } from "./router.js";
 
-//Help function to create the buttons
+//Helper function to create the buttons
 const registerMenuButton = (id,page) =>{
     const button = document.getElementById(id);
     button.addEventListener('click', () =>{

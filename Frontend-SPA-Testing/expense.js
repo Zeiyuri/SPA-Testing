@@ -6,7 +6,7 @@ export const render = (root) => {
     const form = document.createElement('form');
     const header = document.createElement('h3');
     header.innerText = 'Enter information below to create an Expense';
-   
+    
     let expenseTitleLabel = document.createElement('label');
     let expenseTitleInput = document.createElement('input');
     expenseTitleInput.type = 'text';
@@ -77,7 +77,7 @@ export const render = (root) => {
     submitButton.type = 'submit';
     submitButton.textContent = 'Create Expense'
 
-    form.append(header, expenseTitleLabel, br1, br2, expenseAmountLabel, br3, br4, expenseCategoryNameLabel, br5, br6, expenseDateLabel, br7, br8, usernameLabel, br9, br10, passwordLabel, br11, br12, submitButton);
+    form.append(header, expenseTitleLabel, br1, br2, expenseAmountLabel, br3, br4, expenseCategoryNameLabel, br5, br6, expenseDateLabel, br7, br8, submitButton);
     divToReturn.appendChild(form);
     
     form.onsubmit = async (e) =>{
@@ -85,10 +85,7 @@ export const render = (root) => {
         const expenseTitle = document.getElementById('expenseTitle').value;
         const expenseAmount = document.getElementById('expenseAmount').value;
         const expenseCategoryName = document.getElementById('expenseCategoryName').value;
-        const expenseDate = document.getElementById('expenseDate').value;
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
+        const expenseDate = document.getElementById('expenseDate').value;     
         const data = {
             'title' : expenseTitle,
             'expenseDate' : expenseDate,
