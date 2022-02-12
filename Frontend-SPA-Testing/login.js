@@ -1,8 +1,16 @@
 import { login } from "./FetchHandler.js";
-
+import {GetUserName} from "./CredentialsHandler.JS";
+import { changePage } from "./router.js";
 export const render = (root) => {
-   
-    const divToReturn = document.createElement('div');
+    const username = GetUserName() 
+    const divToReturn = document.createElement("div");
+    if(username){
+        const GrandmasterFlash = document.createElement("p");
+        const TheMessage = `User: ${username} is logged in`;
+        GrandmasterFlash.textContent = TheMessage;
+        divToReturn.appendChild(GrandmasterFlash);
+    }
+    else {
     let form = document.createElement("form");
     let header = document.createElement("h3");
     header.innerText = "Login Here";
@@ -46,14 +54,15 @@ export const render = (root) => {
             .then(response =>{
                 if(response.status === 200) 
             {
-                alert('Login Successful')
+                alert('Login Successful');
+                changePage("login");
             } 
             else
             {
-                alert('Something went wrong!')
+                alert('Something went wrong!');
             }
             });
     }
-
+}
     root.appendChild(divToReturn);
 }
