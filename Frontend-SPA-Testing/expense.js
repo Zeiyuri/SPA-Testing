@@ -1,8 +1,14 @@
 import { createExpense } from "./FetchHandler.js";
-
+import { GetUserName } from "./CredentialsHandler.JS";
 export const render = (root) => {
     
     const divToReturn = document.createElement('div');
+    if(!GetUserName()){
+        const MessageP = document.createElement("p");
+        MessageP.textContent="Please login to be able to register an expense";
+        divToReturn.appendChild(MessageP);
+    }
+    else {
     const form = document.createElement('form');
     const header = document.createElement('h3');
     header.innerText = 'Enter information below to create an Expense';
@@ -103,8 +109,8 @@ export const render = (root) => {
                 alert('Something went wrong!')
             }
             });
+        }
     }
-
     
     
     root.appendChild(divToReturn);
