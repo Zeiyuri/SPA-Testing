@@ -61,4 +61,9 @@ const createCategory = async (username,password,body) => {
     JSON.stringify(body)
     )
 };
-export {login, logout, registerUser, createExpense,createCategory}
+const getExpenses = async () => {
+    return [{"Name":"Shoes","Price":"100","Category":"Leisure","Date":"2022-02-12"},
+            {"Name":"Dog","Price":"200","Category":"Farming Equipment","Date":"2022-02-12"},
+            {"Name":"Donkey","Price":"300","Category":"Domestic Animal","Date":"2022-02-12"}]
+}
+export {login, logout, registerUser, createExpense,createCategory,getExpenses}
