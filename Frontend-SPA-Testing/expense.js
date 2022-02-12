@@ -48,12 +48,12 @@ export const render = (root) => {
 
     let expenseDateLabel = document.createElement('label');
     let expenseDateInput = document.createElement('input');
-    expenseDateInput.type = 'datetime-local';
+    expenseDateInput.type = "date";
     expenseDateInput.id = 'expenseDate';
     expenseDateInput.placeholder = 'Expense Date';
     expenseDateInput.required = true;
-    expenseDateLabel.append(expenseDateInput);
-
+    expenseDateInput.value = new Date().toISOString().slice(0, 10);
+    expenseDateLabel.append(expenseDateInput); 
     let br7 = document.createElement('br');
     let br8 = document.createElement('br');
 
