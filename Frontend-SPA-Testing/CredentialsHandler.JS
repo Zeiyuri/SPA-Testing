@@ -20,4 +20,8 @@ const UnsetUsername = () => {
 const UnsetPassword = () => {
     localStorage.removeItem("password");
 }
-export{GetPassword,GetUserName,SetPassword,SetUserName,UnsetUsername,UnsetPassword};
+
+const isUserLoggedIn = () => {
+    return (GetUserName() != null) 
+}
+export{GetPassword,GetUserName,SetPassword,SetUserName,UnsetUsername,UnsetPassword, isUserLoggedIn};

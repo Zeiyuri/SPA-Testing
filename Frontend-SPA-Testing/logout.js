@@ -1,10 +1,9 @@
 import { logout } from "./FetchHandler.js";
-import { GetUserName, GetPassword } from "./CredentialsHandler.JS";
+import { GetUserName, GetPassword, isUserLoggedIn } from "./CredentialsHandler.JS";
 import { changePage } from "./router.js";
 export const render = (root) => {
-    const username = GetUserName();
     const divToReturn = document.createElement("div");
-    if(username){
+    if(isUserLoggedIn()){
         const LogoutButton = document.createElement("button");
         LogoutButton.textContent = "Logout";
         LogoutButton.onclick = (event) => {

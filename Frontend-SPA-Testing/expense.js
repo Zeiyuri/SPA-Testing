@@ -1,12 +1,11 @@
 import { createExpense } from "./FetchHandler.js";
 import { GetUserName } from "./CredentialsHandler.JS";
+import { CreateMessageP } from "./CreateMessageP.js";
 export const render = (root) => {
     
     const divToReturn = document.createElement('div');
     if(!GetUserName()){
-        const MessageP = document.createElement("p");
-        MessageP.textContent="Please login to be able to register an expense";
-        divToReturn.appendChild(MessageP);
+        divToReturn.appendChild(CreateMessageP("Please login to be able to create an expense"));
     }
     else {
     const form = document.createElement('form');

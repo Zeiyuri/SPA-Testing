@@ -1,12 +1,11 @@
 import { login } from "./FetchHandler.js";
-import {GetUserName} from "./CredentialsHandler.JS";
+import {isUserLoggedIn,GetUserName} from "./CredentialsHandler.JS";
 import { changePage } from "./router.js";
-export const render = (root) => {
-    const username = GetUserName() 
+export const render = (root) => { 
     const divToReturn = document.createElement("div");
-    if(username){
+    if(isUserLoggedIn()){
         const GrandmasterFlash = document.createElement("p");
-        const TheMessage = `User: ${username} is logged in`;
+        const TheMessage = `User: ${GetUserName()} is logged in`;
         GrandmasterFlash.textContent = TheMessage;
         divToReturn.appendChild(GrandmasterFlash);
     }

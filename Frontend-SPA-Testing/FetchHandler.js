@@ -66,4 +66,21 @@ const getExpenses = async () => {
             {"Name":"Dog","Price":"200","Category":"Farming Equipment","Date":"2022-02-12"},
             {"Name":"Donkey","Price":"300","Category":"Domestic Animal","Date":"2022-02-12"}]
 }
-export {login, logout, registerUser, createExpense,createCategory,getExpenses}
+
+const getRecipients = async () => {
+    return [
+    {
+        "Name": "Mrx",
+        "City": "Stockholm"
+    },
+    {
+        "Name": "Mr. White",
+        "City": "Los Angeles"
+    },
+    {
+        "Name": "Mr. Pink",
+        "City": "Los Angeles"
+
+    }]
+}
+export {login, logout, registerUser, createExpense,createCategory,getExpenses, getRecipients}

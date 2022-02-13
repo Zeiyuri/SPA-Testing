@@ -1,14 +1,15 @@
 import { GetUserName } from "./CredentialsHandler.JS";
 import { getExpenses } from "./FetchHandler.js";
+import { isUserLoggedIn } from "./CredentialsHandler.JS";
+import { CreateMessageP  } from "./CreateMessageP.js";
+import { CreateHeading } from "./CreateHeading.js";
 export const render = (root) => {
 const divToReturn = document.createElement("div");
-alert("Render");
-    if(!GetUserName()){
-        const MessageP = document.createElement("p");
-        MessageP.textContent="Please Login to be able to get expenses";
-        divToReturn.appendChild(MessageP);
+    if(!isUserLoggedIn()){
+        divToReturn.appendChild(CreateMessageP("Please login to be able to view registered expenses"));
     }
     else {
+        divToReturn.appendChild(CreateHeading(`Registered Expenses for ${GetUserName()} `))
         const theList = document.createElement("table");
         const tr = document.createElement("tr");
         const th1 = document.createElement("th");

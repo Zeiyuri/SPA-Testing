@@ -1,11 +1,10 @@
 import { createCategory } from "./FetchHandler.js";
 import { GetUserName } from "./CredentialsHandler.JS";
+import { CreateMessageP  } from "./CreateMessageP.js";
 export const render = (root) => {
     const divToReturn = document.createElement('div');
     if(!GetUserName()){
-        const MessageP = document.createElement("p");
-        MessageP.textContent = "Please login in order to be able to create a category";
-        divToReturn.appendChild(MessageP);  
+        divToReturn.appendChild(CreateMessageP("Please login to be able to register a new category"))
     }
     else {
     const form = document.createElement('form');
