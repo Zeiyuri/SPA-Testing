@@ -62,9 +62,9 @@ const createCategory = async (username,password,body) => {
     )
 };
 const getExpenses = async () => {
-    return [{"Name":"Shoes","Price":"100","Category":"Leisure","Date":"2022-02-12"},
-            {"Name":"Dog","Price":"200","Category":"Farming Equipment","Date":"2022-02-12"},
-            {"Name":"Donkey","Price":"300","Category":"Domestic Animal","Date":"2022-02-12"}]
+    return [{"Name":"Shoes","Price":"100","Category":"Leisure","Date":"2022-02-12","Recipient": "Mrx"},
+            {"Name":"Dog","Price":"200","Category":"Farming Equipment","Date":"2022-02-12", "Recipient": "Mr Pink"},
+            {"Name":"Donkey","Price":"300","Category":"Domestic Animal","Date":"2022-02-12","Recipient": "Mr White"}]
 }
 const CreateRecipient = async (recipientName, recipientCity) => {
     console.log(`Should post to ${apiHost}api/CreateRecipient using method:POST with the following body \{ "Name": ${recipientName}, "City":${recipientCity}  \}` )

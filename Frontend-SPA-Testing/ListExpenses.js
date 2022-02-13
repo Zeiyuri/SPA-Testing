@@ -9,7 +9,7 @@ const divToReturn = document.createElement("div");
         divToReturn.appendChild(CreateMessageP("Please login to be able to view registered expenses"));
     }
     else {
-        
+
         divToReturn.appendChild(CreateHeading(`Registered Expenses for ${GetUserName()} `))
         const theList = document.createElement("table");
         const tr = document.createElement("tr");
@@ -21,7 +21,9 @@ const divToReturn = document.createElement("div");
         th3.textContent="Category";
         const th4 = document.createElement("th");
         th4.textContent="Date";
-        [th1,th2,th3,th4].forEach(te => tr.appendChild(te));
+        const th5 = document.createElement("th");
+        th5.textContent="Recipient";
+        [th1,th2,th3,th5,th4].forEach(te => tr.appendChild(te));
         theList.appendChild(tr);
         getExpenses().then((exp) => { 
             exp.forEach(res =>  {
@@ -34,7 +36,9 @@ const divToReturn = document.createElement("div");
                 td3.textContent = res.Category;
                 let td4 = document.createElement("td");
                 td4.textContent = res.Date;
-                [td1,td2,td3,td4].forEach(td => tmp.appendChild(td));
+                let td5 = document.createElement("td");
+                td5.textContent=res.Recipient;
+                [td1,td2,td3,td5,td4].forEach(td => tmp.appendChild(td));
                 theList.appendChild(tmp);
             })
         /*   
