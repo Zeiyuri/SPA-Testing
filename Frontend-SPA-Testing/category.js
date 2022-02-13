@@ -18,13 +18,11 @@ export const render = (root) => {
     categoryNameInput.id = 'CategoryName';
     categoryNameInput.required = true;
     categoryNameLabel.appendChild(categoryNameInput);
-    let br1 = document.createElement('br');
-    let br2 = document.createElement('br');
     let submitButton = document.createElement('button');
     submitButton.type = 'submit';
     submitButton.textContent = 'Create Category'
 
-    form.append(header,categoryNameLabel, br1, br2 , submitButton);
+    form.append(header,categoryNameLabel,submitButton);
     divToReturn.appendChild(form);
     
     form.onsubmit = async (e) =>{

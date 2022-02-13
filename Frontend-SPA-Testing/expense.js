@@ -1,4 +1,4 @@
-import { createExpense } from "./FetchHandler.js";
+import { createExpense, getRecipients } from "./FetchHandler.js";
 import { GetUserName } from "./CredentialsHandler.JS";
 import { CreateMessageP } from "./CreateMessageP.js";
 export const render = (root) => {
@@ -11,78 +11,57 @@ export const render = (root) => {
     const form = document.createElement('form');
     const header = document.createElement('h3');
     header.innerText = 'Enter information below to create an Expense';
-    
     let expenseTitleLabel = document.createElement('label');
+    expenseTitleLabel.textContent = `Enter expense name`
     let expenseTitleInput = document.createElement('input');
     expenseTitleInput.type = 'text';
     expenseTitleInput.placeholder = 'Expense Name';
     expenseTitleInput.id = 'expenseTitle';
     expenseTitleInput.required = true;
-    expenseTitleLabel.appendChild(expenseTitleInput);
-
-    let br1 = document.createElement('br');
-    let br2 = document.createElement('br');
-
+    expenseTitleLabel.append(document.createElement("br"),expenseTitleInput);
     let expenseAmountLabel = document.createElement('label');
+    expenseAmountLabel.innerText = "Enter amount expended";
     let expenseAmountInput = document.createElement('input');
     expenseAmountInput.type = 'number';
     expenseAmountInput.id = 'expenseAmount';
     expenseAmountInput.placeholder = 'Expense Amount';
     expenseAmountInput.required = true;
-    expenseAmountLabel.append(expenseAmountInput);
-
-    let br3 = document.createElement('br');
-    let br4 = document.createElement('br');
-
+    expenseAmountLabel.append(document.createElement("br"),expenseAmountInput);
     let expenseCategoryNameLabel = document.createElement('label');
+    expenseCategoryNameLabel.innerText ="Enter expense category";
     let expenseCategoryNameInput = document.createElement('input');
     expenseCategoryNameInput.type = 'text';
     expenseCategoryNameInput.id = 'expenseCategoryName';
     expenseCategoryNameInput.placeholder = 'Expense Category';
     expenseCategoryNameInput.required = true;
-    expenseCategoryNameLabel.append(expenseCategoryNameInput);
-
-    let br5 = document.createElement('br');
-    let br6 = document.createElement('br');
-
+    expenseCategoryNameLabel.append(document.createElement("br"),expenseCategoryNameInput);
     let expenseDateLabel = document.createElement('label');
+    expenseDateLabel.innerText ="Pick date for expense";
     let expenseDateInput = document.createElement('input');
     expenseDateInput.type = "date";
     expenseDateInput.id = 'expenseDate';
-    expenseDateInput.placeholder = 'Expense Date';
     expenseDateInput.required = true;
     expenseDateInput.value = new Date().toISOString().slice(0, 10);
-    expenseDateLabel.append(expenseDateInput); 
+    expenseDateLabel.append(document.createElement("br"),expenseDateInput); 
     let br7 = document.createElement('br');
     let br8 = document.createElement('br');
-
-    let usernameLabel = document.createElement('label');
-    let usernameInput = document.createElement('input');
-    usernameInput.type = 'text';
-    usernameInput.placeholder = 'Username';
-    usernameInput.id = 'username'
-    usernameInput.required = true;
-    usernameLabel.appendChild(usernameInput);
-
-    let br9 = document.createElement('br');
-    let br10 = document.createElement('br');
-
-    let passwordLabel = document.createElement('label');
-    let passwordInput = document.createElement('input');
-    passwordInput.type = 'password';
-    passwordInput.placeholder = 'Password';
-    passwordInput.id = 'password';
-    passwordInput.required = true;
-    passwordLabel.appendChild(passwordInput);
-
-    let br11 = document.createElement('br');
-    let br12 = document.createElement('br');
-
+    const recipientSelectLabel = document.createElement("label");
+    recipientSelectLabel.textContent ="Pick recipient of expense";
+    const recipientInput = document.createElement("select");
+    getRecipients().then(result => result.forEach(
+        rec => {
+            const tmp = document.createElement("option");
+            tmp.value = rec.Id;
+            tmp.innerText = rec.Name;
+            recipientInput.appendChild(tmp);
+        }
+    ))
+    recipientSelectLabel.append(document.createElement("br"),recipientInput,document.createElement("br"));
     let submitButton = document.createElement('button');
     submitButton.type = 'submit';
     submitButton.textContent = 'Create Expense'
 
-    form.append(header, expenseTitleLabel, br1, br2, expenseAmountLabel, br3, br4, expenseCategoryNameLabel, br5, br6, expenseDateLabel, br7, br8, submitButton);
+    form.append(header, expenseTitleLabel, expenseAmountLabel, expenseCategoryNameLabel, expenseDateLabel, recipientSelectLabel, submitButton);
     divToReturn.appendChild(form);
     
     form.onsubmit = async (e) =>{
@@ -110,7 +89,5 @@ export const render = (root) => {
             });
         }
     }
-    
-    
     root.appendChild(divToReturn);
 }

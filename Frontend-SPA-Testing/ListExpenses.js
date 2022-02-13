@@ -9,6 +9,7 @@ const divToReturn = document.createElement("div");
         divToReturn.appendChild(CreateMessageP("Please login to be able to view registered expenses"));
     }
     else {
+        
         divToReturn.appendChild(CreateHeading(`Registered Expenses for ${GetUserName()} `))
         const theList = document.createElement("table");
         const tr = document.createElement("tr");
