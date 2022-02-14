@@ -1,8 +1,12 @@
 import { createCategory } from "./FetchHandler.js";
-
+import { GetUserName } from "./CredentialsHandler.JS";
+import { CreateMessageP  } from "./CreateMessageP.js";
 export const render = (root) => {
-    
     const divToReturn = document.createElement('div');
+    if(!GetUserName()){
+        divToReturn.appendChild(CreateMessageP("Please login to be able to register a new category"))
+    }
+    else {
     const form = document.createElement('form');
     const header = document.createElement('h3');
     header.innerText = 'Enter information below to create a category';
@@ -14,38 +18,11 @@ export const render = (root) => {
     categoryNameInput.id = 'CategoryName';
     categoryNameInput.required = true;
     categoryNameLabel.appendChild(categoryNameInput);
-
-    let br1 = document.createElement('br');
-    let br2 = document.createElement('br');
-
-
-    let usernameLabel = document.createElement('label');
-    let usernameInput = document.createElement('input');
-    usernameInput.type = 'text';
-    usernameInput.placeholder = 'Username';
-    usernameInput.id = 'username'
-    usernameInput.required = true;
-    usernameLabel.appendChild(usernameInput);
-
-    let br3 = document.createElement('br');
-    let br4 = document.createElement('br');
-
-    let passwordLabel = document.createElement('label');
-    let passwordInput = document.createElement('input');
-    passwordInput.type = 'password';
-    passwordInput.placeholder = 'Password';
-    passwordInput.id = 'password';
-    passwordInput.required = true;
-    passwordLabel.appendChild(passwordInput);
-
-    let br5 = document.createElement('br');
-    let br6 = document.createElement('br');
-
     let submitButton = document.createElement('button');
     submitButton.type = 'submit';
     submitButton.textContent = 'Create Category'
 
-    form.append(header,categoryNameLabel, br1, br2 ,usernameLabel, br3 ,br4, passwordLabel,br5, br6, submitButton);
+    form.append(header,categoryNameLabel,submitButton);
     divToReturn.appendChild(form);
     
     form.onsubmit = async (e) =>{
@@ -67,6 +44,7 @@ export const render = (root) => {
                 alert('Something went wrong!')
             }
             });
+        }
     }
 
     

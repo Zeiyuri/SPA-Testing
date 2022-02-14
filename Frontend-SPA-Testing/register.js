@@ -8,71 +8,53 @@ export const render = (root) => {
     header.innerText = 'Enter information below to create an Account';
    
     let fNameLabel = document.createElement('label');
+    fNameLabel.innerText ="Enter surname"
     let fNameInput = document.createElement('input');
     fNameInput.type = 'text';
     fNameInput.placeholder = 'First Name';
     fNameInput.id = 'fName';
     fNameInput.required = true;
     fNameLabel.appendChild(fNameInput);
-
-    let br1 = document.createElement('br');
-    let br2 = document.createElement('br');
-
     let lNameLabel = document.createElement('label');
+    lNameLabel.textContent ="Enter family name";
     let lNameInput = document.createElement('input');
     lNameInput.type = 'text';
     lNameInput.id = 'lName';
     lNameInput.placeholder = 'Last Name';
     lNameInput.required = true;
     lNameLabel.append(lNameInput);
-
-    let br3 = document.createElement('br');
-    let br4 = document.createElement('br');
-
     let cityLabel = document.createElement('label');
+    cityLabel.textContent="Enter city"
     let cityInput = document.createElement('input');
     cityInput.type = 'text';
     cityInput.id = 'city';
     cityInput.placeholder = 'City';
     cityInput.required = true;
     cityLabel.append(cityInput);
-
-    let br5 = document.createElement('br');
-    let br6 = document.createElement('br');
-
     let usernameLabel = document.createElement('label');
+    usernameLabel.textContent = "Enter desired username";
     let usernameInput = document.createElement('input');
     usernameInput.type = 'text';
     usernameInput.placeholder = 'Username';
     usernameInput.id = 'username'
     usernameInput.required = true;
     usernameLabel.appendChild(usernameInput);
-
-    let br7 = document.createElement('br');
-    let br8 = document.createElement('br');
-
     let emailLabel = document.createElement('label');
     let emailInput = document.createElement('input');
     emailInput.type = 'email';
     emailInput.id = 'email';
     emailInput.placeholder = 'Email Adress';
     emailInput.required = true;
+    emailLabel.textContent="Enter email";
     emailLabel.append(emailInput);
-
-    let br9 = document.createElement('br');
-    let br10 = document.createElement('br');
-
     let passwordLabel = document.createElement('label');
+    passwordLabel.textContent="Enter desired password";
     let passwordInput = document.createElement('input');
     passwordInput.type = 'password';
     passwordInput.placeholder = 'Password';
     passwordInput.id = 'password';
     passwordInput.required = true;
     passwordLabel.appendChild(passwordInput);
-
-    let br11 = document.createElement('br');
-    let br12 = document.createElement('br');
-
     let genderSelect = document.createElement('select');
     let optionOne = document.createElement('option');
     let optionTwo = document.createElement('option');
@@ -86,15 +68,11 @@ export const render = (root) => {
     optionTwo.innerText = 'Female';
     genderSelect.appendChild(optionOne);
     genderSelect.appendChild(optionTwo);
-
-    let br13 = document.createElement('br');
-    let br14 = document.createElement('br');
-
     let submitButton = document.createElement('button');
     submitButton.type = 'submit';
     submitButton.textContent = 'Create Account'
 
-    form.append(header, fNameLabel, br1, br2, lNameLabel, br3, br4, cityLabel, br5, br6, usernameLabel, br7, br8, emailLabel, br9, br10, passwordLabel, br11, br12, genderSelect, br13, br14, submitButton);
+    form.append(header, fNameLabel, lNameLabel, cityLabel,  usernameLabel, emailLabel, passwordLabel, genderSelect, submitButton);
     divToReturn.appendChild(form);
     
     form.onsubmit = async (e) =>{
