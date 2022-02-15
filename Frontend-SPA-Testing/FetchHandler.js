@@ -61,11 +61,22 @@ const createCategory = async (body) => {
     JSON.stringify(body)
     )
 };
+// const getExpenses = async () => {
+//     return [{"Name":"Shoes","Price":"100","Category":"Leisure","Date":"2022-02-12","Recipient": "Mrx"},
+//             {"Name":"Dog","Price":"200","Category":"Farming Equipment","Date":"2022-02-12", "Recipient": "Mr Pink"},
+//             {"Name":"Donkey","Price":"300","Category":"Domestic Animal","Date":"2022-02-12","Recipient": "Mr White"}]
+// }
 const getExpenses = async () => {
-    return [{"Name":"Shoes","Price":"100","Category":"Leisure","Date":"2022-02-12","Recipient": "Mrx"},
-            {"Name":"Dog","Price":"200","Category":"Farming Equipment","Date":"2022-02-12", "Recipient": "Mr Pink"},
-            {"Name":"Donkey","Price":"300","Category":"Domestic Animal","Date":"2022-02-12","Recipient": "Mr White"}]
-}
+    return await Fetcher(`${apiHost}api/expenses`, {
+        'Content-Type': 'application/json',
+        Authorization:`Basic ${credentialsAsBase64(GetUserName(), GetPassword())}`,
+        
+    },
+    'GET'
+    
+    ).then(response => response.json())
+} 
+
 const CreateRecipient = async (recipientName, recipientCity) => {
     console.log(`Should post to ${apiHost}api/CreateRecipient using method:POST with the following body \{ "Name": ${recipientName}, "City":${recipientCity}  \}` )
 }
