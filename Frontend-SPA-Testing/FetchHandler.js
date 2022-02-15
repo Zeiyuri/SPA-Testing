@@ -51,11 +51,11 @@ const createExpense = async (body) => {
     JSON.stringify(body)
     )
 }
-const createCategory = async (username,password,body) => {
+const createCategory = async (body) => {
     return await Fetcher(`${apiHost}api/createExpenseCategory`,
     {
         'Content-Type': 'application/json',
-        Authorization:`Basic ${credentialsAsBase64(username,password)}`
+        Authorization:`Basic ${credentialsAsBase64(GetUserName(),GetPassword())}`
     },
     'POST',
     JSON.stringify(body)
