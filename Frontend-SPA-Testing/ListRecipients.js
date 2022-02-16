@@ -6,7 +6,7 @@ import { CreateHeading } from "./CreateHeading.js";
 export const render = (root) => {
 const divToReturn = document.createElement("div");
     if(!isUserLoggedIn()){
-        divToReturn.appendChild(CreateMessageP("Please login to be able to view registered expenses"));
+        divToReturn.appendChild(CreateMessageP("Please login to be able to view your recipients"));
     }
     else {
         

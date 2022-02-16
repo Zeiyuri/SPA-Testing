@@ -72,8 +72,15 @@ const getExpenses = async () => {
     ).then(response => response.json())
 } 
 
-const CreateRecipient = async (recipientName, recipientCity) => {
-    console.log(`Should post to ${apiHost}api/CreateRecipient using method:POST with the following body \{ "Name": ${recipientName}, "City":${recipientCity}  \}` )
+const createRecipient = async (body) => {
+    return await Fetcher(`${apiHost}api/createRecipient`,
+    {
+        'Content-Type': 'application/json',
+        Authorization:`Basic ${credentialsAsBase64(GetUserName(),GetPassword())}`
+    },
+    'POST',
+    JSON.stringify(body)
+    )
 }
 const getRecipients = async () => {
     return await Fetcher(`${apiHost}api/listRecipients`, {
@@ -85,4 +92,4 @@ const getRecipients = async () => {
     
     ).then(response => response.json())
 }
-export {login, logout, registerUser, createExpense,createCategory,getExpenses, getRecipients}
+export {login, logout, registerUser, createExpense,createCategory,getExpenses, getRecipients, createRecipient}
